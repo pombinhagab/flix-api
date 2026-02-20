@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from genres.views import genres_create_list_view, genre_detail_view
+from genres.views import GenreCreateListView, GenreRetriveUpdateDestroyView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls), # django admin
-    path('genres/', genres_create_list_view, name='genres-create-list'), # get the list of genres
-    path('genres/<int:pk>/', genre_detail_view, name='genre-detail-view') # one specific genre
+    
+    path('genres/', GenreCreateListView.as_view(), name='genres-create-list'), # all genres
+    path('genres/<int:pk>/', GenreRetriveUpdateDestroyView.as_view(), name='genre-detail-view') # one specific genre
 ]
